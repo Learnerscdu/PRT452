@@ -1,0 +1,26 @@
+//Refactoring TDD code//
+import random
+
+print("Guess a number between 1 and 100. Press q to quit")
+
+guess_num =g random.randint(1,100)
+user_guess = input("Input your choice: ")
+attempts = 1
+
+while(user_guess != 'q' && int(user_guess) != random_num:):
+  attempts += 1
+  user_guess = int(user_guess)
+
+  if user_guess == guess_num:
+    print("The guess is right. The number was", guess_num)    
+    break
+  
+  elif user_guess < guess_num:
+    print("Guess higher")
+  
+  else:
+    print("Guess lower")
+  
+  user_guess = input("Input your choice: ")
+
+print("Number of attempts", attempts, " attempts\n")
