@@ -1,24 +1,31 @@
-import random
-random_num = random.randint(1, 100)
-print("Guess a number between 1 and 100.")
-attempts = 1
+import java.util.Random;
+import java.util.Scanner;
 
+public class RandomNumberGenerator {
 
-user_guess = input("Take a guess: ")
+	public static void main(String[] args) {
+		Random r = new Random();
+		int lowerLimit = 1, upperLimit = 100;
+		int generatedNumber = r.nextInt(upperLimit - lowerLimit) + lowerLimit;
 
-# guessing loop
-while user_guess != "q" && int(user_guess) != random_num:
-    if int(user_guess) > random_num:
-        print("Lower...")
-    else:
-        print("Higher...")
-
-    user_guess = input("Take a guess: ")
-    attempts += 1
-
-if int(user_guess) == random_num:
-    print("The guess is right. The number was", random_num)
-    print("Number of attempts ", attempts, "attempts!\n")
-else:
-    print("You quit the program")
-    print("Number of attempts ",attempts)
+		System.out.println(generatedNumber);
+		Scanner sc = new Scanner(System.in);
+		int numberOfAttempts = 0;
+		do{
+			System.out.println("Guess the number or enter 'q' to quit");
+			String s = sc.nextLine();
+			if(s.equalsIgnoreCase("q")){
+				System.out.println("You made "+ numberOfAttempts + " trails.");
+				break;
+			} else {
+				numberOfAttempts++;
+				int guessedNumber = Integer.parseInt(s);
+				if(guessedNumber == generatedNumber){
+					System.out.println("Correct and you have guessed in " + numberOfAttempts+" trials.");
+					break;
+				}
+			}
+		} while(true);
+		sc.close();
+	}
+}
