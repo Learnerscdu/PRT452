@@ -1,0 +1,24 @@
+import random
+random_num = random.randint(1, 100)
+print("Guess a number between 1 and 100.")
+attempts = 1
+
+
+user_guess = input("Take a guess: ")
+
+# guessing loop
+while user_guess != "q" && int(user_guess) != random_num:
+    if int(user_guess) > random_num:
+        print("Lower...")
+    else:
+        print("Higher...")
+
+    user_guess = input("Take a guess: ")
+    attempts += 1
+
+if int(user_guess) == random_num:
+    print("The guess is right. The number was", random_num)
+    print("Number of attempts ", attempts, "attempts!\n")
+else:
+    print("You quit the program")
+    print("Number of attempts ",attempts)
