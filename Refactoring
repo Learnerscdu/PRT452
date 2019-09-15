@@ -1,26 +1,37 @@
-//Refactoring TDD code//
-import random
+import java.util.Random;
+import java.util.Scanner;
 
-print("Guess a number between 1 and 100. Press q to quit")
+public class RandomNumberGenerator {
 
-guess_num =g random.randint(1,100)
-user_guess = input("Input your choice: ")
-attempts = 1
+	public static void main(String[] args) {
+		Random r = new Random();
+		int lowerLimit = 1, upperLimit = 100;
+		int generatedNumber = r.nextInt(upperLimit - lowerLimit) + lowerLimit;
+		System.out.println(generatedNumber);
+		Scanner sc = new Scanner(System.in);
+		int numberOfAttempts = 0;
+		numberOfAttempts = refactorRandomGenerator(generatedNumber, sc, numberOfAttempts);
+		sc.close();
+	}
 
-while(user_guess != 'q' && int(user_guess) != random_num:):
-  attempts += 1
-  user_guess = int(user_guess)
+	private static int refactorRandomGenerator(int generatedNumber, Scanner sc, int numberOfAttempts) {
+		do{
+			System.out.println("Guess the number or enter 'q' to quit");
+			String s = sc.nextLine();
+			if(s.equalsIgnoreCase("q")){
+				System.out.println("You made "+ numberOfAttempts + " trails.");
+				break;
+			} else {
+				numberOfAttempts++;
+				int guessedNumber = Integer.parseInt(s);
+				if(guessedNumber == generatedNumber){
+					System.out.println("Correct and you have guessed in " + numberOfAttempts+" trials.");
+					break;
+				}
+			}
+		} while(true);
+		return numberOfAttempts;
+	}
 
-  if user_guess == guess_num:
-    print("The guess is right. The number was", guess_num)    
-    break
-  
-  elif user_guess < guess_num:
-    print("Guess higher")
-  
-  else:
-    print("Guess lower")
-  
-  user_guess = input("Input your choice: ")
+}
 
-print("Number of attempts", attempts, " attempts\n")
